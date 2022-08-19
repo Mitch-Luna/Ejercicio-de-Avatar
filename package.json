@@ -1,0 +1,34 @@
+{
+  "name": "componentesreutilizables",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "add": "^2.0.6",
+    "expo": "~46.0.7",
+    "expo-status-bar": "~1.4.0",
+    "or": "^0.2.0",
+    "prop-types": "^15.8.1",
+    "react": "18.0.0",
+    "react-avatar": "^5.0.3",
+    "react-dom": "18.0.0",
+    "react-native": "0.69.4",
+    "react-native-awesome-alerts": "^2.0.0",
+    "react-native-elements": "^3.4.2",
+    "react-native-user-avatar": "^1.0.8",
+    "react-native-web": "~0.18.7",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@types/react": "~18.0.14",
+    "@types/react-native": "~0.69.1",
+    "typescript": "~4.3.5"
+  },
+  "private": true
+}
