@@ -18,6 +18,7 @@
     "react-avatar": "^5.0.3",
     "react-dom": "18.0.0",
     "react-native": "0.69.4",
+    "react-native-avatar-generator": "^1.0.2",
     "react-native-awesome-alerts": "^2.0.0",
     "react-native-elements": "^3.4.2",
     "react-native-user-avatar": "^1.0.8",

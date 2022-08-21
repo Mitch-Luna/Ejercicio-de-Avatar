@@ -1,40 +1,60 @@
-import { View, Button, Text, Image, ImageBackground, StyleSheet, TextInput } from 'react-native';
-import { Avatar } from "react-native-elements";
+import { View, Button, Text, TouchableOpacity, Image, ImageBackground, TextInput } from 'react-native';
 import { useState } from 'react';
 import { JournalInput } from './JournalInput';
-import { PasarAlHijo } from './JournalAlert';
 import UserAvatar from 'react-native-user-avatar';
+import { Avatar } from 'react-native-elements/dist/avatar/Avatar';
 
-export const Journal = () => {
+
+type Imagen = "imagen1" | "imagen2" | "imagen3" | "imagen4" | "imagen5" 
+type Mensaje = "alert1" | "alert2" | "alert3" | "alert4"
+type Caja = "caja1" | "caja2"
+
+interface Props {
+  imagen?: Imagen;
+  mensage?: Mensaje;
+  caja?:Caja;
+}
+const ValidarImagen = {
+  imagen1: 'https://i.pinimg.com/originals/13/6b/f4/136bf41b645636e0ee48f3601b8e0c8d.jpg',
+  imagen2: 'https://i.pinimg.com/736x/97/1f/5a/971f5a3514595bba759e8722b5f4e55e.jpg',
+  imagen3: 'https://i.pinimg.com/736x/29/47/b4/2947b4e9da7802bafbb98f14c8829fcb.jpg',
+  imagen4: 'https://i.pinimg.com/236x/45/8d/69/458d69ed636616b91c79fa62d266f19a.jpg',
+  imagen5: 'https://i-d-images.vice.com/images/2016/01/25/la-obsesin-coreana-con-la-belleza-masculina-desafa-el-gnero-body-image-1453713762.jpg',
+  default : 'https://thumbs.dreamstime.com/b/icono-de-usuario-personas-vectoriales-vector-perfil-ilustraci%C3%B3n-persona-comercial-s%C3%ADmbolo-grupo-usuarios-masculino-195157776.jpg'
+}
+const mandarAlert ={
+  alert1: "white",
+  alert2: "black",
+  alert3: "green",
+  alert4: "blue"
+
+}
+const colorAlert ={
+  caja1: "red",
+  caja2: "yellow",
+
+}
+
+export const Journal = ({ imagen,mensage,caja }: Props) => {
+  const AvatarImage = imagen ? ValidarImagen[imagen] : ValidarImagen.default;
+  const MostraAlert =  mensage? mandarAlert[mensage] : mandarAlert.alert2; 
+  const cajaAlert =  caja? colorAlert[caja] : colorAlert.caja2; 
+
   const [name, setName] = useState("");
+  // const [urri, setURL] = useState('');
+
 
   const saveName = (text: string) => {
     setName(text);
   };
-
-  const saveJournal = () => {
-    if (name !== name) {
-      return (
-        <View
-          style={{
-            marginHorizontal: 86,
-          }}
-        >
-          <UserAvatar
-            size={80}
-            name={name.substring}
-            bgColor={'red'} />
-        </View>
-      )
-    }
-  }
-  // const intento = () => {
-  //   if (name !== lastName) {
-  //     name.substring(0, 1)
-  //     lastName.substring(0, 1)
-  //   }
-
+  // const saveURL = (text: string) => {
+  //   setURL(text);
+  // };
+  // if (name !== name) {
+  //   name.substring(0, 1)
   // }
+ 
+
   return (
     <View>
       <Text style={{
@@ -70,51 +90,49 @@ export const Journal = () => {
           height: 600
 
         }}>
+          <View
+            style={{
+              marginHorizontal: 80
+              
+            }
+            }
+          >
+           
+            <Avatar
+              rounded
+              size={120}
+              source={{uri:AvatarImage}}
+              
+            />
+            <UserAvatar
+              rounded
+              size={80}
+              name={name}
+            />
+            <View
+            style={{
+              marginTop:38,
+              marginBottom:20,
+              alignItems:'center',
+              width:120,
+              height:56,
+              backgroundColor:cajaAlert,
+            }}
+            >
+            <Text style={{color:MostraAlert, fontSize:20}}>Default Alert</Text>
 
-          <UserAvatar
-            textColor={'black'}
-            size={80}
-            name={name}
-            bgColor={'red'} />
+            </View>
 
-          <UserAvatar
-            size={80}
-            source={require('./assets/chico3.jpg')}
-          />
+            
+          </View>
 
-
-
-
-          <Avatar containerStyle={{ height: 80, width: 70, marginBottom: 24 }}
-            size="large"
-            rounded
-            source={require('./assets/chico3.jpg')}
-          />
-          <Text>Liliana</Text>
-
-          <Avatar containerStyle={{ height: 80, width: 70 }}
-            size="large"
-            rounded
-            source={require('./assets/chica.jpg')}
-
-          />
-          <Text>  Jack</Text>
           <View
             style={{
               marginHorizontal: 30,
               margin: -190
 
             }}>
-            <Avatar containerStyle={{ height: 80, width: 70, marginHorizontal: 150, marginBottom: 24 }}
-              size="large"
-              rounded
-              source={require('./assets/chica4.jpeg')} />
-
-            {/* <Avatar containerStyle={{ height: 80, width: 70, marginHorizontal: 150, marginBottom: 24, backgroundColor: 'red' }}
-              size="large"
-              rounded
-            /> */}
-
+ 
           </View>
         </View>
 
@@ -126,7 +144,9 @@ export const Journal = () => {
         >
           <JournalInput
             saveNombre={saveName}
-          />
+            // guardarURL={saveURL}
+            />       
+
 
         </View>
         <View
@@ -137,7 +157,7 @@ export const Journal = () => {
           <Button
             color={"mediumorchid"}
             title="Guardar"
-            onPress={saveJournal}
+            // onPress={saveJournal}
           />
         </View>
 
@@ -148,3 +168,5 @@ export const Journal = () => {
   );
 }
 
+ 
+    
